@@ -612,6 +612,282 @@ Let c denote the trading cost per currency unit (including commissions, the bid-
 
 A rough estimate of the effect of transaction costs on the return per period is just the product of c and the strategy's average turnover. For example, if transaction costs are c = 0.2% and the strategy's turnover is 250% per year, transaction costs will reduce returns by about 0.5% per year.
 
+\
+
+# Bonds / Interest Rates
+
+---
+
+## Definitions and Notations
+
+---
+
+\begin{equation}
+\begin{aligned}
+P_{t}^{(n)} &= \text{price of a n-year discount bond at time t} \\
+p_{t}^{(n)} &= \text{corresponding log bond price} \\
+Y_{t}^{(n)} &= \text{gross yield on a discount bond with n years to maturity} \\
+y_{t}^{(n)} &= \text{log yield of a n-year discount bond at time t} \\
+y_{t}^{(1)} &= \text{short rate} \\
+y_{t}^{(n)} &= \text{long rate} \\
+f_t^{(n)} &-y_t^{(1)} =  \text{forward spot spread}
+\end{aligned}
+\end{equation}
+
+### Bond Prices and Yields
+
+\begin{equation}
+\begin{aligned}
+P_{t}^{(n)}&=\frac{1}{\left(Y_{t}^{(n)}\right)^{n}} \\
+p_{t}^{(n)}&=-ny_{t}^{(n)} \\
+Y_{t}^{(n)}&=\left(\frac{1}{P_{t}^{(n)}}\right)^{\frac{1}{n}} \\
+y_{t}^{(n)}&=-\frac{1}{n} p_{t}^{(n)}=\ln \left(Y_{t}^{(n)}\right)
+\end{aligned}
+\end{equation}
+
+### Forward Rates  
+
+\
+
+The forward rate is the rate at which you can contract today to lend or borrow in the future. We denote the discrete and continuously compounded forward rates for a loan from time $t+n-1$ to time $t + n$ by $F_{t}^{(n)}$ and $f_{t}^{(n)}$, respectively.  
+
+- No arbitrage implies that
+
+\begin{equation}
+\begin{aligned}
+F_{t}^{(n)}&=\frac{P_{t}^{(n-1)}}{P_{t}^{(n)}} \\
+f_{t}^{(n)}&=p_{t}^{(n-1)}-p_{t}^{(n)} \\
+\end{aligned}
+\end{equation}
+
+- Bond prices can be expressed as their discounted present value using forward rates:
+
+\begin{equation}
+\begin{aligned}
+P_{t}^{(n)}&=\left(\prod_{j=1}^{n} F_{t}^{j}\right)^{-1} \\
+p_{t}^{(n)}&=-\sum_{j=1}^{n} f_{t}^{j}
+\end{aligned}
+\end{equation}
+
+### Returns
+
+\
+
+The **returns from holding a n-period bond** from time $t$ to time $t + 1$ are:
+
+\begin{equation}
+\begin{aligned}
+R_{t+1}^{(n)} &=\frac{P_{t+1}^{(n-1)}}{P_{t}^{(n)}} \\
+r_{t+1}^{(n)} &=p_{t+1}^{(n-1)}-p_{t}^{(n)} \\
+\end{aligned}
+\end{equation}
+
+The **return from holding a one-period bond** is just its yield, i.e.
+
+\begin{equation}
+\begin{aligned}
+R_{t+1}^{(1)} &=Y_{t}^{(1)} \\
+r_{t+1}^{(1)} &=y_{t}^{(1)}
+\end{aligned}
+\end{equation}
+
+The **excess log returns** from holding an n-period bond are
+
+\begin{equation}
+\begin{aligned}
+r x_{t+1}^{(n)}=r_{t+1}^{(n)}-y_{t}^{(1)}
+\end{aligned}
+\end{equation}
+
+**Decomposition of the excess log returns** into the **initial yield spread** and the **change in the bond's log yield** from period $t$ to period $t + 1$ **scaled by its (remaining) duration**:
+
+\begin{equation}
+\begin{aligned}
+r x_{t+1}^{(n)}&=r_{t+1}^{(n)}-y_{t}^{(1)} \\
+&=p_{t+1}^{(n-1)}-p_{t}^{(n)}-y_{t}^{(1)} \\
+&=-(n-1) y_{t+1}^{(n-1)}+n y_{t}^{(n)}-y_{t}^{(1)} \\
+&=\underbrace{\left(y_{t}^{(n)}-y_{t}^{(1)}\right)}_{\text {Initial yield spread }}-\underbrace{(n-1)}_{\text {Duration }} \underbrace{\left(y_{t+1}^{(n-1)}-y_{t}^{(n)}\right)}_{\text {Yield change }}
+\end{aligned}
+\end{equation}
+
+\
+
+## Three Basic Questions
+
+\
+
+### 1. Why do interest rates move?  
+
+- Yields are characterized by a dominant level factor shifting yields of all maturities up and down.
+- The short rates are set by the central bank taking macroeconomic factors such as unemployment and expected inflation into account.
+
+### 2. Why do yields differ across maturities?  
+
+- The **yield curve** is a plot of yields of zero-coupon bonds as a function of their maturity. It is also called the **term structure of interest rates**.
+
+- The level and shape of the yield curve vary over time depending on economic conditions.
+
+### 3. Why does the yield spread vary over time?
+
+- The **yield spread** (also called the term spread or term premium) represents the **slope of the yield curve**.
+
+- During recessions, the yield curve steepens, while during expansions it flattens or sometimes even inverts.
+
+- Yield curve inversions tend to occur **right before recessions**.
+
+\ 
+
+## The Expectations Hypothesis 
+
+\
+
+Under the expectations hypothesis, **risk premia are constant and unpredictable**.
+
+\
+
+**rpy** is the expected return from holding a n-period bond to maturity, financed by rolling over short-term bonds.  
+
+**rpf** (or forward premium) is the expected return from planning to borrow for a year in the future spot market and agreeing today to lend in the forward market.  
+
+**rph** is the one-period excess return from holding a long-term bond for one period, financed by issuing a one-period bond. This is typically the dependent variable in return predictability regressions.  
+
+\
+
+Alternative ways of getting money from one period to another must have the same expected value (plus a risk premium).
+
+- The **n-period yield** is the **average of expected future one-period yields**:
+
+\begin{equation}
+\begin{aligned}
+y_{t}^{(n)}=\frac{1}{n} \mathbb{E}_{t}\left[y_{t}^{(1)}+y_{t+1}^{(1)}+\ldots+y_{t+n-1}^{(1)}\right]+r p y^{(n)}
+\end{aligned}
+\end{equation}
+
+- The **forward rate** equals the **expected future spot rate**:
+
+\begin{equation}
+\begin{aligned}
+f_{t}^{(n)}=\mathbb{E}_{t}\left[y_{t+n-1}^{(1)}\right]+r p f^{(n)}
+\end{aligned}
+\end{equation}
+
+- The **expected returns** from holding bonds (for one year!!) of **all maturities** are **identical**:
+
+\begin{equation}
+\begin{aligned}
+\mathbb{E}_{t}\left[r_{t+1}^{(n)}\right]=y_{t}^{(1)}+r p h^{(n)}
+\end{aligned}
+\end{equation}
+
+In the purest form of the expectations hypothesis, $rpy$, $rpf$ and $rph$ are zero.
+
+\
+
+## Bond Risk Premium
+
+\
+
+### Empirical Evidence
+
+\
+
+\- **Long term bonds are heavily overpriced**. $\to$ average holding period returns of bonds of different maturities are quite similar, despite the increasing standard deviation of longer-maturity bond returns.  
+\- **The reward for extending the duration** is highest at short maturities and decays at longer maturities.  
+\- The **Sharpe ratios obtained by extending the duration** exceed **one at short maturities** (if the one-month Treasury bill is used as the riskless rate) and decline monotonically from the shortest to the longest portfolios.
+
+\
+
+## Predictability
+
+\
+
+### Basic Idea  
+
+\
+
+**Under the expectations hypothesis, risk premia are constant and unpredictable.**
+
+\
+
+### Testing the **EH** Using **Forward-Spot Spreads**
+
+\
+
+**Form 2**: Forward rates should forecast future short rates:
+
+\begin{equation}
+\begin{aligned}
+f_{t}^{(n)}=\mathbb{E}_{t}\left[y_{t+n-1}^{(1)}\right]+r p f^{(n)} \\
+\end{aligned}
+\end{equation}
+
+Implied regression:
+
+\begin{equation}
+\begin{aligned}
+y_{t+n-1}^{(1)}=\alpha+\beta f_{t}^{(n)}+\varepsilon_{t+n-1} \\
+\end{aligned}
+\end{equation}
+
+The **EH predicts that $\beta=1$.**  
+
+\
+
+Since interest rates are very persistent, it is better to use spreads instead (substract $y_{t}^{(1)}$ to make variables stationary):
+\begin{boldmath}
+\begin{equation}
+\begin{aligned}
+y_{t+n-1}^{(1)}-y_{t}^{(1)}=\alpha+\beta\left(f_{t}^{(n)}-y_{t}^{(1)}\right)+\varepsilon_{t+n-1}
+\end{aligned}
+\end{equation}
+\end{boldmath}
+
+Under the EH, the spread between the forward 1-year rate and today's 1-year rate should predict the change in the 1-year yield over the next $n-1$ years.
+
+\
+
+#### Fama-Bliss Regressions
+
+\
+
+Decompose the forward-spot $f_{t}^{(n)}-y_{t}^{(1)}$ spread into an entity that has to **hold ex ante and ex post**.
+
+\begin{equation}
+\begin{aligned}
+f_{t}^{(n)}-y_{t}^{(1)} &=p_{t}^{(n-1)}-p_{t}^{(n)}-y_{t}^{(1)} \\
+&=\left(p_{t+1}^{(n-1)}-p_{t}^{(n)}-y_{t}^{(1)}\right)+\left(-p_{t+1}^{(n-1)}+p_{t}^{(n-1)}\right) \\
+&= \underbrace{\left(r_{t+1}^{(n)}-y_{t}^{(1)}\right)}_{\text {excess return }} + \underbrace{(n-1)\left(y_{t+1}^{(n-1)}-y_{t}^{(n-1)}\right)}_{\text {changes in yields }}
+\end{aligned}
+\end{equation}
+
+\
+
+The **forward-spot spread** must **predict future returns** or **changes in yields**.
+
+\
+
+Regressions:
+\begin{boldmath}
+\begin{equation}
+\begin{array}{c}
+y_{t+n-1}^{(1)}-y_{t}^{(1)}=\alpha+\beta\left(f_{t}^{(n)}-y_{t}^{(1)}\right)+\varepsilon_{t+n-1} \\
+r_{t+1}^{(n)}-y_{t}^{(1)}=a+b\left(f_{t}^{(n)}-y_{t}^{(1)}\right)+\eta_{t+1}
+\end{array}
+\end{equation}
+\end{boldmath}
+Under the **EH**:
+
+- Forward rates forecast future short rates $\pmb{(\beta=1)}$
+- Risk premia are constant and unpredictable $\pmb{(b=0)}$  
+
+
+
+
+
+
+
+
+
 
 
 
