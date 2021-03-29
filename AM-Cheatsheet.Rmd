@@ -207,7 +207,7 @@ R_{p, t+1}=R_{p, t+1}^{L}-R_{p, t+1}^{S} + R_{f,t+1}
 V_t &= \text{Value of the portfolio before any taxes} \\
 D_t &= \text{aggregate dividends paid on long positions} \\
 \tau_d &= \text{domestic tax rate}\\
-\tau_d &= \text{nonrefundable part of the foreign withholding tax rate}
+\tau_f &= \text{nonrefundable part of the foreign withholding tax rate}
 \end{aligned}
 \end{equation}
 
@@ -230,7 +230,7 @@ Expressed in terms of returns, the tax is:
 and the after-tax return is:
 
 \begin{equation}
-R_{p, t}^{net}= R_{p, t} (1-\tau_{d})+\max \left(\tau_{f}-\tau_{d}, 0\right) \frac{D_{t}}{V_{t-1}}
+R_{p, t}^{net}= R_{p, t} (1-\tau_{d}) - \max \left(\tau_{f}-\tau_{d}, 0\right) \frac{D_{t}}{V_{t-1}}
 \end{equation}
 
 ###  Portfolios with Futures Contracts
@@ -238,7 +238,7 @@ R_{p, t}^{net}= R_{p, t} (1-\tau_{d})+\max \left(\tau_{f}-\tau_{d}, 0\right) \fr
 \begin{equation}
 \begin{aligned}
 R_{p,t+1} &= \text{portfolio return excluding futures} \\
-R_{p,t+1} &= \text{portfolio return *with* futures} \\
+R_{p,t+1}^{F} &= \text{portfolio return with futures} \\
 F_t &= \text{futures price} \\
 N_F &= \text{portfolio's futures exposure}\\
 &= \text{number of contracts times multiplier}
@@ -880,17 +880,118 @@ Under the **EH**:
 - Forward rates forecast future short rates $\pmb{(\beta=1)}$
 - Risk premia are constant and unpredictable $\pmb{(b=0)}$  
 
+# Currencies
+
+\
+
+## Measuring Returns on FX Investments
+
+\
+
+\begin{equation}
+\begin{aligned}
+R_{t,k} &= \text{return on foreign asset measured in domestic currency} \\
+r_{t,k} &= ln(1+R_{t,k}) \\
+R_{t,k}^{FX} &= \text{currency return measured in domestic currency} \\
+R_{t,k}^{*} &= \text{return on foreign asset measured in foreign currency} \\
+r_{t,k}^{*} &= ln(1+R_{t,k}^{*}) \\
+S_t &= \text{spot exchange rate expressed as $\frac{dom. curr}{for. curr.}$} \\
+s_t &= ln(1+R_{t,k}^{*}) \\
+\end{aligned}
+\end{equation}
+
+\
+
+The **Gross Return** measured in **domestic currency** is
+\begin{equation}
+\begin{aligned}
+\pmb{1+R_{t, k}}&=V_{t+k}=\frac{S_{t+k}\left(1+R_{t, k}^{*}\right)}{S_{t}} \\
+&=\underbrace{\left(1+R_{t, k}^{F \chi}\right)}_{\text {return on $\Delta{S}$ }} \times \underbrace{\left(1+R_{t,k}^{*}\right)}_{\text { return on for. currency}}\\
+\pmb{r_{t, k}}&=s_{t+k}-s_{t}+r_{t, k}^{*}=r_{t, k}^{F X}+r_{t, k}^{*} \\
+\end{aligned}
+\end{equation}
 
 
+**Excess Log Return** compared to domestic riskless asset $\pmb{i_{t,k}}$:
+
+\begin{equation}
+\begin{array}{l}
+\pmb{r x_{t, k}}=s_{t+k}-s_{t}+r_{t, k}^{*}-i_{t, k}
+\end{array}
+\end{equation}
+
+## Covered Interest Rate Parity (CIP)
+
+\begin{equation}
+\begin{aligned}
+I_{t,k} = &\text{ k-period cumulative discrete interest (with compounding)} \\
+&\text{ earned on the domestic currency at time t} \\
+i_{t,k} = &\text{ }ln(1+I_{t,k}) \\
+I_{t,k}^{*} = &\text{ k-period cumulative discrete interest (with compounding)} \\
+&\text{ earned on the foreign currency at time t} \\
+i_{t,k}^{*} = &\text{ }ln(1+I_{t,k}^{*}) \\
+F_{t,k} = &\text{ forward foreign exchange rate}
+\end{aligned}
+\end{equation}
+
+Note: the forward foreign exchange rate is the FX rate you can agree to today for a foreign currency transaction with delivery in k periods. If you sell the foreign currency forward, you will receive $F_{t,k}$ units of the domestic currency per unit of foreign currency at time t + k.
+
+- No arbitrage implies:
+
+$$
+1+I_{t, k}=\frac{F_{t, k}}{S_{t}}\left(1+I_{t, k}^{*}\right) \quad \rightarrow \quad F_{t, k}=S_{t} \frac{1+I_{t, k}}{1+I_{t, k}^{*}}
+$$
+
+- CIP in logs:
+
+$$
+f_{t, k}=s_{t}+\left(i_{t, k}-i_{t, k}^{*}\right)
+$$
+
+- CIP with compounding interest rates:
+
+$$
+\begin{array}{l}
+F_{t, k}=S_{t} \frac{\left(1+I_{t, k}\right)^{k}}{\left(1+I_{t, k}^{*}\right)^{k}} \\
+f_{t, k}=s_{t}+k\left(i_{t, k}-i_{t, k}^{*}\right)
+\end{array}
+$$
+
+### Empirical Evidence
+
+\
+
+CIP is a no-arbitrage relation and does not depend on investor preferences. It used to hold well in data apart from short-lived deviations (Akram et al. [2008]). Persistent deviations have been found since the 2008 financial crisis.
+
+\
+
+## Uncovered Interest Rate Parity (UIP)
+
+\
+
+UIP parity considers the return from an unhedged investment in foreign currency, which can be implemented in two ways:
+
+1. Borrow one unit of the domestic currency, change it in the foreign currency, invest abroad for k periods, and change the proceeds back to the domestic currency at time t + k. Your excess return is:
 
 
+$$
+R_{t, k}=\frac{S_{t+k}}{S_{t}}\left(1+I_{t, k}^{*}\right)-\left(1+I_{t, k}\right)
+$$
 
+2. Buy one unit of the foreign currency forward for delivery at time t + k and
+change it back to the domestic currency at time t + k. Your payoff is:
 
+$$
+\Pi_{t, k}^{F}=S_{t+k}-F_{t, k}
+$$
 
+\underline{If CIP holds}, both payoffs are proportional to each other:
 
-
-
-
-
+$$
+\begin{aligned}
+\Pi_{t, k}^{F} &=S_{t+k}-S_{t} \frac{1+I_{t, k}}{1+I_{t, k}^{*}} \qquad |\ \text{Use CIP}\\
+&=\frac{S_{t}}{1+l_{t, k}^{*}}\left(\frac{S_{t+k}}{S_{t}}\left(1+l_{t, k}^{*}\right)-\left(1+I_{t, k}\right)\right)=\frac{S_{t}}{1+l_{t, k}^{*}} R_{t, k}
+\end{aligned}
+$$
 
 
