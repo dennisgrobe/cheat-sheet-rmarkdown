@@ -1019,6 +1019,7 @@ returns**.
 \begin{equation}\begin{aligned}
 r_{t+1}^{(n)}-y_{t}^{(1)}+(n-1)\left(y_{t+1}^{(n-1)}-y_{t}^{(n)}\right)=\left(y_{t}^{(n)}-y_{t}^{(1)}\right)
 \end{aligned}\end{equation}
+<<<<<<< HEAD
 
 Respective Regression:
 
@@ -1102,6 +1103,90 @@ s_t &= ln(S_t) \qquad |\text{ Note: $S_t$ in Price Quotation} \\
 
 \
 
+=======
+
+Respective Regression:
+
+\begin{equation}\begin{aligned}
+r_{t+1}^{(n)}-y_{t}^{(1)}=a+b\left(\frac{y_{t}^{(n)}-y_{t}^{(1)}}{n-1}\right)+\eta_{t+1}
+\end{aligned}\end{equation}
+
+**Under EH**:
+
+- $b=0$: constant and unpredictable risk premia
+
+**Empirical Evidence**:
+
+- **EH fails**: b is large and highly significant
+
+- Hence, risk premia / expected excess returns are high when the price of long
+bonds is low. Put differently, a steep yield curve implies that long-term bonds
+are cheap and short-term bonds are expensive.
+
+- As was the case for stocks, a low (relative) price predicts high future returns.
+
+
+## Expected Returns Across the Term Structure
+
+\
+
+### Single -Factor Model
+
+Cochrane and Piazzesi:
+
+\begin{equation}\begin{aligned}
+r x_{t+1}^{(n)}=\beta_{0}^{(n)}+\beta_{1}^{(n)} y_{t}^{(1)}+\beta_{2}^{(n)} f_{t}^{(2)}+\beta_{3}^{(n)} f_{t}^{(3)}+\beta_{4}^{(n)} f_{t}^{(4)}+\beta_{5}^{(n)} f_{t}^{(5)}+\varepsilon_{t+1}
+\end{aligned}\end{equation}
+
+**Key Findings**:
+
+1. This model generates substantially higher R2s than Fama-Bliss and Campbell-Shiller regressions.
+2. The regression coefficients form a tent shape for bonds of all maturities.
+3. A **single factor** constructed as a linear combination of the forward rates predicts returns across **all maturities**.
+4. The single factor is **countercyclical** and also forecasts **stock returns**.
+
+**This suggests that one can predict returns on all bonds using a single factor.**
+
+\
+
+**Empirical Findings**:
+
+- The **EH is rejected**, Bond returns are predictable.
+- The single factor **also predicts stock returns**, implying common changes in
+risk premia for stocks and bonds.
+- The CP factor helps price the cross-section of stock returns.
+- The CP factor **increases during recessions**, similar to the term spread.
+
+## Multi-Factor Model
+
+- $F1$ corresponds to the average yield level $\rightarrow$ **level factor**.
+- $F2$ captures changes in the slope of the yield curve $\rightarrow$ **slope factor**.
+- $F3$ captures changes in the curvature of the yield curve $\rightarrow$ **curvature factor**.
+
+
+# Currencies
+
+\
+
+## Measuring Returns on FX Investments
+
+\
+
+\begin{equation}
+\begin{aligned}
+R_{t,k} &= \text{return on foreign asset measured in domestic currency} \\
+r_{t,k} &= ln(1+R_{t,k}) \\
+R_{t,k}^{FX} &= \text{currency return measured in domestic currency} \\
+R_{t,k}^{*} &= \text{return on foreign asset measured in foreign currency} \\
+r_{t,k}^{*} &= ln(1+R_{t,k}^{*}) \\
+S_t &= \text{spot exchange rate expressed as $\frac{dom. curr}{for. curr.}$} \\
+s_t &= ln(S_t) \\
+\end{aligned}
+\end{equation}
+
+\
+
+>>>>>>> 42cb73bed947c396516ee03c17715204bad5e2f0
 The **Gross Return** measured in **domestic currency** is
 \begin{equation}
 \begin{aligned}
@@ -1197,6 +1282,7 @@ $$
 &=\frac{S_{t}}{1+l_{t, k}^{*}}\left(\frac{S_{t+k}}{S_{t}}\left(1+l_{t, k}^{*}\right)-\left(1+I_{t, k}\right)\right)=\frac{S_{t}}{1+l_{t, k}^{*}} R_{t, k}
 \end{aligned}
 $$
+<<<<<<< HEAD
 
 \
 
@@ -1310,7 +1396,53 @@ SR_p  &= \sqrt{SR_1^2 + SR_2^2}
 \begin{equation}\begin{aligned}
 R^2 = \frac{SS_{regressor}}{SS_{total}}
 \end{aligned}\end{equation}
+=======
 
+\
+
+### UIP Equation and Implication
+
+\
+
+Ordinary:
+
+$$
+1+I_{t, k}=\frac{\mathbb{E}_{t}\left[S_{t+k}\right]}{S_{t}}\left(1+I_{t, k}^{*}\right)
+$$
+\
+
+Letting $s_{t, t+k}^{\mathbb{E}}=\ln \left(\mathbb{E}_{t}\left[S_{t+k}\right]\right)$, UIP in logs:
+
+\
+
+$$
+s_{t, t+k}^{\mathbb{E}}-s_{t}=i_{t, k}-i_{t, k}^{*}
+$$
+
+- UIP states that the expected return from an investment in foreign currency should be the same as that of an investment in domestic currency – **There is no risk premium from holding the foreign currency - on average, the FX move should offset the interest rate differential**.
+
+- Equivalently, the expected excess return from an investment in foreign currency should be zero - **Currency excess returns are unpredictable**
+
+- Thus, UIP claims that $F_{t,k} = \mathbb{E}_{t}[S_{t+k}]$ – **the forward rate is an unbiased predictor of the future spot rate**.
+
+\
+
+### Currency Risk Premia
+
+- **The currency risk premium is positive** – there is some compensation for the exchange rate risk incurred when making unhedged investments in high interest rate countries.
+
+- The returns on investments in high-yielding currencies are **negatively skewed**.
+
+- This suggests that the extra return from investments in high-yielding currencies is a **risk premium rather than mispricing.**
+
+\
+
+## Two Ways to Test UIP
+
+\
+>>>>>>> 42cb73bed947c396516ee03c17715204bad5e2f0
+
+Testing Working Copy
 
 
 
