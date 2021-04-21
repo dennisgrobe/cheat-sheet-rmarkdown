@@ -44,7 +44,7 @@ Integration by parts: $\int {u\frac{{dv}}{{dx}}} dx = uv - \int {\frac{{du}}{{dx
 
 ## Computing Returns
 
----
+\
 
 ### ordinary return:
 
@@ -139,11 +139,11 @@ Ordinary returns aggregate in the cross-section, log returns not.
 * log returns for multiple-period returns.  
 
 If the riskless assset is **asset 0**:
-
+\begin{boldmath}
 \begin{equation}
 R_{p, t+1}=\mathbf{w}_{t}^{\prime} \mathbf{R}_{t+1}+\left(1-\mathbf{w}_{t}^{\prime} \mathbf{1}\right) R_{f, t+1}
 \end{equation}
-
+\end{boldmath}
 ###  Returns on Long-Short Portfolios
 
 \begin{equation}
@@ -207,7 +207,7 @@ R_{p, t+1}=R_{p, t+1}^{L}-R_{p, t+1}^{S} + R_{f,t+1}
 V_t &= \text{Value of the portfolio before any taxes} \\
 D_t &= \text{aggregate dividends paid on long positions} \\
 \tau_d &= \text{domestic tax rate}\\
-\tau_d &= \text{nonrefundable part of the foreign withholding tax rate}
+\tau_f &= \text{nonrefundable part of the foreign withholding tax rate}
 \end{aligned}
 \end{equation}
 
@@ -230,7 +230,7 @@ Expressed in terms of returns, the tax is:
 and the after-tax return is:
 
 \begin{equation}
-R_{p, t}^{net}= R_{p, t} (1-\tau_{d})+\max \left(\tau_{f}-\tau_{d}, 0\right) \frac{D_{t}}{V_{t-1}}
+R_{p, t}^{net}= R_{p, t} (1-\tau_{d}) - \max \left(\tau_{f}-\tau_{d}, 0\right) \frac{D_{t}}{V_{t-1}}
 \end{equation}
 
 ###  Portfolios with Futures Contracts
@@ -238,7 +238,7 @@ R_{p, t}^{net}= R_{p, t} (1-\tau_{d})+\max \left(\tau_{f}-\tau_{d}, 0\right) \fr
 \begin{equation}
 \begin{aligned}
 R_{p,t+1} &= \text{portfolio return excluding futures} \\
-R_{p,t+1} &= \text{portfolio return *with* futures} \\
+R_{p,t+1}^{F} &= \text{portfolio return with futures} \\
 F_t &= \text{futures price} \\
 N_F &= \text{portfolio's futures exposure}\\
 &= \text{number of contracts times multiplier}
@@ -279,6 +279,7 @@ dB_t &= \text{a Brownian motion increment} \\
 \mu_t &= \text{drift} \\
 \sigma_t &= \text{volatility} \\
 r &= \text{riskless rate} \\
+q &= \text{dividend yield} \\
 T &= \text{maturity}
 \end{aligned}
 \end{equation}
@@ -292,10 +293,11 @@ d S_{t}=\left(\mu_{t}-q\right) S_{t} d t+\sigma_{t} S_{t} d B_{t}
 \end{equation}
 
 The price of a futures contract maturing at T is:
-
+\begin{boldmath}
 \begin{equation}
 F_{t}= S_{t} e^{(r-q)(T-t)}.
 \end{equation}
+\end{boldmath}
 
 Using the Ito formula, the **return on the futures contract is**:
 
@@ -307,13 +309,13 @@ d F_{t}&=d S_{t} e^{(r-q)(T-t)}-S_{t}(r-q) e^{(r-q)(T-t)} d t \\
 \end{equation}
 
 This can be rewritten as:
-
+\begin{boldmath}
 \begin{equation}
 \begin{aligned}
 \frac{d F_{t}}{F_t}= \frac{d S_{t}}{S_{t}} -(r-q) d t = \left(\mu_{t}-q\right)d t+\sigma_{t} d B_{t}
 \end{aligned}
 \end{equation}
-
+\end{boldmath}
 For a **total return index** one has:
 
 \begin{equation}
@@ -321,11 +323,11 @@ d S_{t}=\mu_{t} S_{t} d t+\sigma_{t} S_{t} d B_{t}
 \end{equation}
 
 and
-
+\begin{boldmath}
 \begin{equation}
 F_{t}= S_{t} e^{r(T-t)}.
 \end{equation}
-
+\end{boldmath}
 The expression for the futures return does not change.
 
 \
@@ -384,10 +386,11 @@ R_{j,t}= \text{excess returns on (portfolios of) } \textbf{traded assets}
 \end{aligned}
 \end{equation}
 
+\begin{boldmath}
 \begin{equation}
 R_{p, t}-R_{f, t}=\alpha_{p}+\sum_{j=1}^{J} \beta_{j} R_{j, t}+\varepsilon_{p, t}
 \end{equation}
-
+\end{boldmath}
 
 ### Benchmark models
 
@@ -439,13 +442,13 @@ R_{p, t}-R_{f, t}=& \alpha_{p}+\beta_{M, p}\left(R_{M, t}-R_{f, t}\right)+\beta_
 
 #### 1. Plotting Beta against Market Return
 
-If the strategy is successful at timing the market, there should be a positive relation between the $\beta$ (return on the asset class / exposure to a specific factor) of the portfolio and the market return (or the difference between the market return and the bond return).
+If the strategy is successful at timing the market, there should be a **positive relation** between the $\beta$ (return on the asset class / exposure to a specific factor) of the portfolio and the market return (or the difference between the market return and the bond return).
 
 \
 
-#### 2. Comparing Portfolio Return and Market Return
+#### 2. Plotting Portfolio Return against Market Return
 
-If the strategy is successful at timing the market, the portfolio's exposure to fluctuations in the market is greater when the market goes up than when it goes down. This yields a convex relation between the market return and the return on the portfolio.
+If the strategy is successful at timing the market, the portfolio's exposure to fluctuations in the market is greater when the market goes up than when it goes down. This yields a **convex relation** between the market return and the return on the portfolio.
 
 \
 
@@ -468,7 +471,7 @@ R_{p, t}-R_{f, t}=&\alpha_{p}+\beta_{p}\left(R_{M, t}-R_{f, t}\right) \\
 \end{aligned}
 \end{equation}
 
-There is evidence of timing ability if the coefficient $\gamma_p$ is positive (and statistically significant). Unfortunately, the power of these tests is low.
+There is evidence of timing ability **if the coefficient $\boldsymbol{\gamma_p}$ is positive** (and statistically significant). Unfortunately, the power of these tests is low.
 
 \
 
@@ -510,12 +513,12 @@ There is evidence of timing ability if the coefficient $\gamma_p$ is positive (a
 
 #### 1. Nonnormality:
 Returns on many assets are not normally distributed \
-$\to$ **Nonnormal Residuals**: By the Gauss-Markov theorem, the OLS estimator is the best linear unbiased estimator (BLUE) if the errors are IID. Normality is not required.
+$\to$ **Nonnormal Residuals**: By the Gauss-Markov theorem, the OLS estimator is the best linear unbiased estimator **(BLUE)** if the errors are IID. **Normality is not required**.
 
 #### 2. Nonspherical Residuals: 
 Volatility is time-varying so asset returns are not IID. \
 $\to$ **Non-IID Residuals (correlated or heteroskedastic)**: \
-\- The **OLS estimator is still unbiased** (but inefficient; the GLS estimator is BLUE in this case; in effect GLS transforms the errors to make them uncorrelated and homoskedastic). \
+\- The **OLS estimator is still unbiased** (but inefficient; the **GLS estimator is BLUE** in this case; in effect GLS transforms the errors to make them uncorrelated and homoskedastic). \
 \- However, the **OLS standard errors are incorrect**. To assess the sampling variance of the estimates, you should use robust standard errors.
 
 \
@@ -578,7 +581,9 @@ Examples:
 
 \
 \- You backtest a strategy using the current members of a stock market index. In doing so you leave out firms that left the index in previous years.
+
 \- You backtest a strategy using bonds that are traded at the end of your sample period. In doing so you leave out the ones that matured and the ones that defaulted.
+
 \- You backtest a strategy using commodities for which futures contracts currently exist. In doing so you leave out contracts that were delisted.
 
 **Fix**:
@@ -612,7 +617,7 @@ Let c denote the trading cost per currency unit (including commissions, the bid-
 
 A rough estimate of the effect of transaction costs on the return per period is just the product of c and the strategy's average turnover. For example, if transaction costs are c = 0.2% and the strategy's turnover is 250% per year, transaction costs will reduce returns by about 0.5% per year.
 
-\
+---
 
 # Bonds / Interest Rates
 
@@ -620,7 +625,6 @@ A rough estimate of the effect of transaction costs on the return per period is 
 
 ## Definitions and Notations
 
----
 
 \begin{equation}
 \begin{aligned}
@@ -651,7 +655,33 @@ y_{t}^{(n)}&=-\frac{1}{n} p_{t}^{(n)}=\ln \left(Y_{t}^{(n)}\right)
 
 The forward rate is the rate at which you can contract today to lend or borrow in the future. We denote the discrete and continuously compounded forward rates for a loan from time $t+n-1$ to time $t + n$ by $F_{t}^{(n)}$ and $f_{t}^{(n)}$, respectively.  
 
-- No arbitrage implies that
+\
+
+No arbitrage implies that
+
+\begin{equation}
+\begin{aligned}
+( Y_{t}^{(n)} )^{(n)}&= (Y_{t}^{(n-1)})^{(n-1)} \bullet F_t^{(n)} \\
+\end{aligned}
+\end{equation}
+
+which in logs is:
+
+\begin{equation}
+\begin{aligned}
+n y_t^{(n)}&= (n-1)y_t^{(n-1)} \boldsymbol{+} f_t^{(n)} \\
+\end{aligned}
+\end{equation}
+
+(Note: calculation using continuously compounded rates as follows:)
+
+\begin{equation}
+\begin{aligned}
+e^{n y_t^{(n)}}&= e^{(n-1)y_t^{(n-1)}} \bullet e^{f_t^{(n)}} \\
+\end{aligned}
+\end{equation}
+
+or equivalently
 
 \begin{equation}
 \begin{aligned}
@@ -659,6 +689,10 @@ F_{t}^{(n)}&=\frac{P_{t}^{(n-1)}}{P_{t}^{(n)}} \\
 f_{t}^{(n)}&=p_{t}^{(n-1)}-p_{t}^{(n)} \\
 \end{aligned}
 \end{equation}
+
+### Bond Prices using Forwards
+
+\
 
 - Bond prices can be expressed as their discounted present value using forward rates:
 
@@ -703,9 +737,9 @@ r x_{t+1}^{(n)}=r_{t+1}^{(n)}-y_{t}^{(1)}
 
 \begin{equation}
 \begin{aligned}
-r x_{t+1}^{(n)}&=r_{t+1}^{(n)}-y_{t}^{(1)} \\
-&=p_{t+1}^{(n-1)}-p_{t}^{(n)}-y_{t}^{(1)} \\
-&=-(n-1) y_{t+1}^{(n-1)}+n y_{t}^{(n)}-y_{t}^{(1)} \\
+r x_{t+1}^{(n)}&=r_{t+1}^{(n)}-y_{t}^{(1)}  \qquad \qquad | r_{t+1}^{(n)} =p_{t+1}^{(n-1)}-p_{t}^{(n)} \\
+&=p_{t+1}^{(n-1)}-p_{t}^{(n)}-y_{t}^{(1)} \qquad | p_{t}^{(n)}=-ny_{t}^{(n)}\\
+&=-(n-1) y_{t+1}^{(n-1)}+n y_{t}^{(n)}-y_{t}^{(1)} \quad |ny_t = (n-1) \cdot y_t + y_t\\
 &=\underbrace{\left(y_{t}^{(n)}-y_{t}^{(1)}\right)}_{\text {Initial yield spread }}-\underbrace{(n-1)}_{\text {Duration }} \underbrace{\left(y_{t+1}^{(n-1)}-y_{t}^{(n)}\right)}_{\text {Yield change }}
 \end{aligned}
 \end{equation}
@@ -718,8 +752,8 @@ r x_{t+1}^{(n)}&=r_{t+1}^{(n)}-y_{t}^{(1)} \\
 
 ### 1. Why do interest rates move?  
 
-- Yields are characterized by a dominant level factor shifting yields of all maturities up and down.
-- The short rates are set by the central bank taking macroeconomic factors such as unemployment and expected inflation into account.
+- Yields are characterized by a **dominant level factor** shifting yields of all maturities up and down.
+- The **short rates** are set by the central bank taking macroeconomic factors such as unemployment and expected inflation into account.
 
 ### 2. Why do yields differ across maturities?  
 
@@ -791,7 +825,7 @@ In the purest form of the expectations hypothesis, $rpy$, $rpf$ and $rph$ are ze
 
 \
 
-\- **Long term bonds are heavily overpriced**. $\to$ average holding period returns of bonds of different maturities are quite similar, despite the increasing standard deviation of longer-maturity bond returns.  
+\- **Long term bonds are heavily overpriced**. $\to$ average holding period returns of bonds of different maturities are quite similar, despite the *increasing standard deviation* of longer-maturity bond returns.  
 \- **The reward for extending the duration** is highest at short maturities and decays at longer maturities.  
 \- The **Sharpe ratios obtained by extending the duration** exceed **one at short maturities** (if the one-month Treasury bill is used as the riskless rate) and decline monotonically from the shortest to the longest portfolios.
 
@@ -813,7 +847,7 @@ In the purest form of the expectations hypothesis, $rpy$, $rpf$ and $rph$ are ze
 
 \
 
-**Form 2**: Forward rates should forecast future short rates:
+**Form 2: Forward rates should forecast future short rates:**
 
 \begin{equation}
 \begin{aligned}
@@ -829,6 +863,7 @@ y_{t+n-1}^{(1)}=\alpha+\beta f_{t}^{(n)}+\varepsilon_{t+n-1} \\
 \end{aligned}
 \end{equation}
 
+
 The **EH predicts that $\beta=1$.**  
 
 \
@@ -842,7 +877,7 @@ y_{t+n-1}^{(1)}-y_{t}^{(1)}=\alpha+\beta\left(f_{t}^{(n)}-y_{t}^{(1)}\right)+\va
 \end{equation}
 \end{boldmath}
 
-Under the EH, the spread between the forward 1-year rate and today's 1-year rate should predict the change in the 1-year yield over the next $n-1$ years.
+**Under the EH**, the spread between the forward 1-year rate and today's 1-year rate **should predict** the change in the 1-year yield over the next $n-1$ years.
 
 \
 
@@ -875,18 +910,406 @@ r_{t+1}^{(n)}-y_{t}^{(1)}=a+b\left(f_{t}^{(n)}-y_{t}^{(1)}\right)+\eta_{t+1}
 \end{array}
 \end{equation}
 \end{boldmath}
+
+For $n=2$, $\beta + b = 1$, for $n\geq 2$,$\beta$ and $b$ need not sum to 1!
+
+\
+
 Under the **EH**:
 
 - Forward rates forecast future short rates $\pmb{(\beta=1)}$
 - Risk premia are constant and unpredictable $\pmb{(b=0)}$  
 
+### Fama-Bliss: Empirical Evidence
+
+- At **short horizons**, the spread does not predict future yields but predicts
+**future returns** instead. Excess returns move almost one-for-one with the
+spread.
+
+- At **longer horizons**, the spread starts to predict changes in **interest rates**.
+**So the EH seems to work in the long-run.**
+
+- Risk premia are **not constant**, contrary to what the EH would predict.
+Rather, they vary over time and with the forward-spot spread. $\boldsymbol{\rightarrow}$ **In the short run**, changes in the **forward-spot spread** translate to changes in the **risk premium**.
+
+- The **EH** does a much better job at **long horizons**. There is *sluggish adjustment* of yields. Future yields eventually start rising. In the meantime, long-term bonds earn positive excess returns.
+$\boldsymbol{\rightarrow}$ **In the long run**, changes in the **forward-spot spread** translate to changes
+in **yields**.
+
+The violation of the EH is often called the **expectations hypothesis puzzle**.
+
+## Testing the EH Using Yield Spreads
+
+**Form 1**: 
+
+\begin{equation}
+\begin{aligned}
+y_{t}^{(n)}=\frac{1}{n} \sum_{i=0}^{n-1} \mathbb{E}_{t}\left(y_{t+i}^{(1)}\right)+r p y^{(n)}
+\end{aligned}
+\end{equation}
+
+and rewrite it as: 
+\begin{boldmath}
+\begin{equation}
+\begin{aligned}
+\frac{1}{n} \sum_{i=0}^{n-1} \mathbb{E}_{t}\left(y_{t+i}^{(1)}\right)-y_{t}^{(1)}+r p y^{(n)}=y_{t}^{(n)}-y_{t}^{(1)}
+\end{aligned}
+\end{equation}
+\end{boldmath}
+
+Similarly, rewriting **Form 3* in excess log return form:
+\begin{equation}
+\begin{aligned}
+\mathbb{E}_{t}\left[r_{t+1}^{(n)}\right]-y_{t}^{(1)}=\mathbb{E}_{t}\left[r x_{t+1}^{(n)}\right]=r p h^{(n)}
+\end{aligned}
+\end{equation}
+
+and inserting the expression for the excess log return yields
+
+\begin{equation}\begin{aligned}
+\mathbb{E}_{t}\left[\left(y_{t}^{(n)}-y_{t}^{(1)}\right)-(n-1)\left(y_{t+1}^{(n-1)}-y_{t}^{(n)}\right)\right]=r p h^{(n)}
+\end{aligned}\end{equation}
+
+or
+\begin{boldmath}
+\begin{equation}\begin{aligned}
+\mathbb{E}_{t}\left[y_{t+1}^{(n-1)}\right]-y_{t}^{(n)}=\frac{y_{t}^{(n)}-y_{t}^{(1)}}{n-1}-\frac{1}{n-1} r p h^{(n)}
+\end{aligned}\end{equation}
+\end{boldmath}
+
+## Campbell-Shiller Regressions
+\begin{boldmath}
+\begin{equation}\begin{aligned}
+\frac{1}{n} \sum\limits_{i=0}^{n-1} \left(y_{t+i}^{(1)}\right)-y_{t}^{(1)}&=\alpha+\beta\left(y_{t}^{(n)}-y_{t}^{(1)}\right)+\varepsilon_{t+n-1} \\
+y_{t+1}^{(n-1)}-y_{t}^{(n)}&=a+b\left(\frac{y_{t}^{(n)}-y_{t}^{(1)}}{n-1}\right)+\eta_{t+1}
+\end{aligned}\end{equation}\end{boldmath}
+
+- The EH predicts that $\beta = 1$ and $b = 1$
+
+Thus, **if the EH holds**, a steep yield curve should predict:
+
+- an increase in future short rates;
+- an increase in future long rates.
+
+### Campbell-Shiller: Empirical Evidence
+
+\
+
+\begin{boldmath}
+$\beta \approx 1$
+\end{boldmath}
+
+- **EH holds**: Yield spreads do predict changes in short-rates. A steep yield curve implies an increase in future short-term rates.
+
+\begin{boldmath}
+$b \neq 1 \textbf{ and not significant}$ 
+\end{boldmath}
+
+- **EH doesn't hold** Yield spreads cannot predict changes in long rates.
+
+### Predicting Excess Returns 
+
+\
+
+An alternative is to consider whether the **yield spread** predicts **excess bond
+returns**.
+
+**Yield spreads must predict excess returns or changes in yields**.
+
+\begin{equation}\begin{aligned}
+r_{t+1}^{(n)}-y_{t}^{(1)}+(n-1)\left(y_{t+1}^{(n-1)}-y_{t}^{(n)}\right)=\left(y_{t}^{(n)}-y_{t}^{(1)}\right)
+\end{aligned}\end{equation}
+
+Respective Regression:
+
+\begin{equation}\begin{aligned}
+r_{t+1}^{(n)}-y_{t}^{(1)}=a+b\left(\frac{y_{t}^{(n)}-y_{t}^{(1)}}{n-1}\right)+\eta_{t+1}
+\end{aligned}\end{equation}
+
+**Under EH**:
+
+- $b=0$: constant and unpredictable risk premia
+
+**Empirical Evidence**:
+
+- **EH fails**: b is large and highly significant
+
+- Hence, risk premia / expected excess returns are high when the price of long
+bonds is low. Put differently, a steep yield curve implies that long-term bonds
+are cheap and short-term bonds are expensive.
+
+- As was the case for stocks, a low (relative) price predicts high future returns.
+
+
+## Expected Returns Across the Term Structure
+
+\
+
+### Single -Factor Model
+
+Cochrane and Piazzesi:
+
+\begin{equation}\begin{aligned}
+r x_{t+1}^{(n)}=\beta_{0}^{(n)}+\beta_{1}^{(n)} y_{t}^{(1)}+\beta_{2}^{(n)} f_{t}^{(2)}+\beta_{3}^{(n)} f_{t}^{(3)}+\beta_{4}^{(n)} f_{t}^{(4)}+\beta_{5}^{(n)} f_{t}^{(5)}+\varepsilon_{t+1}
+\end{aligned}\end{equation}
+
+**Key Findings**:
+
+1. This model generates substantially higher R2s than Fama-Bliss and Campbell-Shiller regressions.
+2. The regression coefficients form a tent shape for bonds of all maturities.
+3. A **single factor** constructed as a linear combination of the forward rates predicts returns across **all maturities**.
+4. The single factor is **countercyclical** and also forecasts **stock returns**.
+
+**This suggests that one can predict returns on all bonds using a single factor.**
+
+\
+
+**Empirical Findings**:
+
+- The **EH is rejected**, Bond returns are predictable.
+- The single factor **also predicts stock returns**, implying common changes in
+risk premia for stocks and bonds.
+- The CP factor helps price the cross-section of stock returns.
+- The CP factor **increases during recessions**, similar to the term spread.
+
+## Multi-Factor Model
+
+- $F1$ corresponds to the average yield level $\rightarrow$ **level factor**.
+- $F2$ captures changes in the slope of the yield curve $\rightarrow$ **slope factor**.
+- $F3$ captures changes in the curvature of the yield curve $\rightarrow$ **curvature factor**.
+
+---
+
+# Currencies
+
+---
+
+## Measuring Returns on FX Investments
+
+\
+
+\begin{equation}
+\begin{aligned}
+R_{t,k} &= \text{return on foreign asset measured in domestic currency} \\
+r_{t,k} &= ln(1+R_{t,k}) \\
+R_{t,k}^{FX} &= \text{currency return measured in domestic currency} \\
+R_{t,k}^{*} &= \text{return on foreign asset measured in foreign currency} \\
+r_{t,k}^{*} &= ln(1+R_{t,k}^{*}) \\
+S_t &= \text{spot exchange rate expressed as $\frac{dom. curr}{for. curr.}$} \\
+s_t &= ln(S_t) \qquad |\text{ Note: $S_t$ in Price Quotation} \\
+\end{aligned}
+\end{equation}
+
+\
+
+The **Gross Return** measured in **domestic currency** is
+\begin{equation}
+\begin{aligned}
+\pmb{1+R_{t, k}}&=V_{t+k}=\frac{S_{t+k}\left(1+R_{t, k}^{*}\right)}{S_{t}} \\
+&=\underbrace{\left(1+R_{t, k}^{F \chi}\right)}_{\text {return on $\Delta{S}$ }} \times \underbrace{\left(1+R_{t,k}^{*}\right)}_{\text { return on for. currency}}\\
+\pmb{r_{t, k}}&=s_{t+k}-s_{t}+r_{t, k}^{*}=r_{t, k}^{F X}+r_{t, k}^{*} \\
+\end{aligned}
+\end{equation}
+
+
+**Excess Log Return** compared to domestic riskless asset $\pmb{i_{t,k}}$:
+
+\begin{equation}
+\begin{array}{l}
+\pmb{r x_{t, k}}=s_{t+k}-s_{t}+r_{t, k}^{*}-i_{t, k}
+\end{array}
+\end{equation}
+
+## Covered Interest Rate Parity (CIP)
+
+\begin{equation}
+\begin{aligned}
+I_{t,k} = &\text{ k-period cumulative discrete interest (with compounding)} \\
+&\text{ earned on the domestic currency at time t} \\
+i_{t,k} = &\text{ }ln(1+I_{t,k}) \\
+I_{t,k}^{*} = &\text{ k-period cumulative discrete interest (with compounding)} \\
+&\text{ earned on the foreign currency at time t} \\
+i_{t,k}^{*} = &\text{ }ln(1+I_{t,k}^{*}) \\
+F_{t,k} = &\text{ forward foreign exchange rate}
+\end{aligned}
+\end{equation}
+
+Note: the forward foreign exchange rate is the FX rate you can agree to today for a foreign currency transaction with delivery in k periods. If you sell the foreign currency forward, you will receive $F_{t,k}$ units of the domestic currency per unit of foreign currency at time t + k.
+
+\
+
+### CIP Equations
+
+- No arbitrage implies:
+
+$$
+1+I_{t, k}=\frac{F_{t, k}}{S_{t}}\left(1+I_{t, k}^{*}\right) \quad \rightarrow \quad F_{t, k}=S_{t} \frac{1+I_{t, k}}{1+I_{t, k}^{*}}
+$$
+
+- CIP in logs:
+
+$$
+f_{t, k}=s_{t}+\left(i_{t, k}-i_{t, k}^{*}\right)
+$$
+
+- CIP with compounding interest rates:
+
+$$
+\begin{array}{l}
+F_{t, k}=S_{t} \frac{\left(1+I_{t, k}\right)^{k}}{\left(1+I_{t, k}^{*}\right)^{k}} \\
+f_{t, k}=s_{t}+k\left(i_{t, k}-i_{t, k}^{*}\right)
+\end{array}
+$$
+
+### Empirical Evidence
+
+\
+
+CIP is a no-arbitrage relation and does not depend on investor preferences. It used to hold well in data apart from short-lived deviations (Akram et al. [2008]). Persistent deviations have been found since the 2008 financial crisis.
+
+\
+
+## Uncovered Interest Rate Parity (UIP)
+
+\
+
+UIP parity considers the return from an **unhedged** investment in foreign currency, which can be implemented in two ways:
+
+1. Borrow one unit of the domestic currency, change it in the foreign currency, invest abroad for k periods, and change the proceeds back to the domestic currency at time t + k. Your excess return is:
+
+
+$$
+R_{t, k}=\frac{S_{t+k}}{S_{t}}\left(1+I_{t, k}^{*}\right)-\left(1+I_{t, k}\right)
+$$
+
+2. Buy one unit of the foreign currency forward for delivery at time t + k and
+change it back to the domestic currency at time t + k. Your payoff is:
+
+$$
+\Pi_{t, k}^{F}=S_{t+k}-F_{t, k}
+$$
+
+\underline{If CIP holds}, both payoffs are proportional to each other:
+
+$$
+\begin{aligned}
+\Pi_{t, k}^{F} &=S_{t+k}-S_{t} \frac{1+I_{t, k}}{1+I_{t, k}^{*}} \qquad |\ \text{Use CIP}\\
+&=\frac{S_{t}}{1+l_{t, k}^{*}}\left(\frac{S_{t+k}}{S_{t}}\left(1+l_{t, k}^{*}\right)-\left(1+I_{t, k}\right)\right)=\frac{S_{t}}{1+l_{t, k}^{*}} R_{t, k}
+\end{aligned}
+$$
+
+\
+
+### UIP Equation and Implication
+
+\
+
+Ordinary:
+
+$$
+1+I_{t, k}=\frac{\mathbb{E}_{t}\left[S_{t+k}\right]}{S_{t}}\left(1+I_{t, k}^{*}\right)
+$$
+\
+
+Letting $s_{t, t+k}^{\mathbb{E}}=\ln \left(\mathbb{E}_{t}\left[S_{t+k}\right]\right)$, UIP in logs:
+
+\
+
+$$
+s_{t, t+k}^{\mathbb{E}}-s_{t}=i_{t, k}-i_{t, k}^{*}
+$$
+
+- UIP states that the expected return from an investment in foreign currency should be the same as that of an investment in domestic currency – **There is no risk premium from holding the foreign currency - on average, the FX move should offset the interest rate differential**.
+
+- Equivalently, the expected excess return from an investment in foreign currency should be zero - **Currency excess returns are unpredictable**
+
+- Thus, UIP claims that $F_{t,k} = \mathbb{E}_{t}[S_{t+k}]$ – **the forward rate is an unbiased predictor of the future spot rate**.
+
+\
+
+### Currency Risk Premia
+
+- **The currency risk premium is positive** – there is some compensation for the exchange rate risk incurred when making unhedged investments in high interest rate countries.
+
+- The returns on investments in high-yielding currencies are **negatively skewed**.
+
+- This suggests that the extra return from investments in high-yielding currencies is a **risk premium rather than mispricing.**
+
+\
+
+## Two Ways to Test UIP
+
+\
+
+---
+
+# General Useful Formulas
+
+---
+
+## Portfolio Calculations
+
+
+\begin{equation}
+\begin{aligned}
+\alpha_p &= \mathbf{w' \boldsymbol{\alpha_i}} \\
+\beta_p &= \mathbf{w' \boldsymbol{\beta_i}} \\
+\rho_{X,Y} &= \frac{\beta_X\beta_Y\sigma_M^2}{\sigma_X \cdot\sigma_Y} = \frac{Cov(X,Y)}{\sigma_X \cdot\sigma_Y} \\
+Cov(X,Y) &= \beta_X\beta_Y\sigma_M^2 = \frac{Cov(X,M) Cov(X,M)}{\sigma_M^2} \\
+\beta_X &= \frac{Cov(X,M)}{\sigma_M^2}
+\end{aligned}
+\end{equation}
 
 
 
+### Portfolio Risk
+\begin{boldmath}
+\begin{equation}
+\begin{aligned}
+\sigma_p^2 &= w_1^2 \sigma_1^2 + w_2^2 \sigma_2^2 + 2 w_1 w_2 \sigma_1 \sigma_2 \rho_{1,2}
+\end{aligned}
+\end{equation}
+\end{boldmath}
 
+Or as sum of idiosyncratic variances:
+\begin{boldmath}
+\begin{equation}
+\begin{aligned}
+\sigma_p^2 &= \beta_p^2 \sigma_M^2 + \sum w_i^2 \sigma_{\epsilon, i}^2
+\end{aligned}
+\end{equation}
+\end{boldmath}
+where $\sigma_{\epsilon, i}^2 = \sigma_{i}^2 - \beta_i^2 \sigma_M^2$
 
+\
 
+If two assets are uncorrelated, the combined Sharpe Ratio is:
 
+\begin{equation}
+\begin{aligned}
+SR_p  &= \sqrt{SR_1^2 + SR_2^2}
+\end{aligned}
+\end{equation}
+
+\
+
+## Statistics
+
+\
+
+### Law of Total Variance
+
+\
+
+\begin{equation}\begin{aligned}
+\operatorname{Var}(Y)=\mathrm{E}[\operatorname{Var}(Y \mid X)]+\operatorname{Var}(\mathrm{E}[Y \mid X])
+\end{aligned}\end{equation}
+
+### R Squared
+
+\begin{equation}\begin{aligned}
+R^2 = \frac{SS_{regressor}}{SS_{total}}
+\end{aligned}\end{equation}
 
 
 

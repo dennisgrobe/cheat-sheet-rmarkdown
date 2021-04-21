@@ -42,13 +42,21 @@
 % No section numbers.
 \setcounter{secnumdepth}{2}
 
+% TRYING to FIX LaTeX Error: Environment Shaded undefined.
+% https://stackoverflow.com/questions/41052687/rstudio-pdf-knit-fails-with-environment-shaded-undefined-error
+% https://tex.stackexchange.com/questions/12262/multicol-and-figures
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 % Minimal paragraph indenting and spacing.
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt plus 0.5ex}
 
-
+% https://stackoverflow.com/questions/40438037/tightlist-error-using-pandoc-with-markdown
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  
 % Canonical "init" statement.
 \begin{document}
 
