@@ -1103,7 +1103,6 @@ s_t &= ln(S_t) \qquad |\text{ Note: $S_t$ in Price Quotation} \\
 
 \
 
-=======
 
 Respective Regression:
 
@@ -1186,7 +1185,6 @@ s_t &= ln(S_t) \\
 
 \
 
->>>>>>> 42cb73bed947c396516ee03c17715204bad5e2f0
 The **Gross Return** measured in **domestic currency** is
 \begin{equation}
 \begin{aligned}
@@ -1282,7 +1280,6 @@ $$
 &=\frac{S_{t}}{1+l_{t, k}^{*}}\left(\frac{S_{t+k}}{S_{t}}\left(1+l_{t, k}^{*}\right)-\left(1+I_{t, k}\right)\right)=\frac{S_{t}}{1+l_{t, k}^{*}} R_{t, k}
 \end{aligned}
 $$
-<<<<<<< HEAD
 
 \
 
@@ -1396,7 +1393,6 @@ SR_p  &= \sqrt{SR_1^2 + SR_2^2}
 \begin{equation}\begin{aligned}
 R^2 = \frac{SS_{regressor}}{SS_{total}}
 \end{aligned}\end{equation}
-=======
 
 \
 
@@ -1440,9 +1436,7 @@ $$
 ## Two Ways to Test UIP
 
 \
->>>>>>> 42cb73bed947c396516ee03c17715204bad5e2f0
 
-Testing Working Copy
 
 
 
